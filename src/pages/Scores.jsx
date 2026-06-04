@@ -96,13 +96,7 @@ export default function Scores() {
 
     setCacheHit(false)
 
-    // No API key — use demo data
-    if (!API_KEY || API_KEY === 'your_key_here') {
-      setMatches(DEMO_MATCHES)
-      setLastUpdated('Demo mode — Add VITE_FOOTBALL_API_KEY to .env')
-      setLoading(false)
-      return
-    }
+    
 
     try {
       const today  = new Date().toISOString().split('T')[0]
@@ -299,15 +293,7 @@ export default function Scores() {
 
         <AdSlot type="leaderboard" />
 
-        {/* API KEY NOTE */}
-        {/* {(!API_KEY || API_KEY === 'your_key_here') && (
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mt-4 text-sm text-blue-800">
-            <strong>ℹ️ Demo Mode:</strong> Add <code className="bg-blue-100 px-1 rounded">VITE_FOOTBALL_API_KEY</code> to <code className="bg-blue-100 px-1 rounded">.env</code> for live scores.
-            <a href="https://www.football-data.org/client/register" target="_blank" rel="noopener noreferrer"
-              className="ml-2 text-blue-700 underline font-semibold">Get free key →</a>
-          </div>
-        )} */}
-
+        
       </div>
     </div>
   )
