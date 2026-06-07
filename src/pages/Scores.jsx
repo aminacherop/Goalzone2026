@@ -84,6 +84,8 @@ export default function Scores() {
 
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
   const API_KEY = import.meta.env.VITE_FOOTBALL_API_KEY
+  console.log('API_URL:', API_URL)
+  console.log('API_KEY:', API_KEY)
 
   // ── FETCH MATCHES ───────────────────────────────────────
   const fetchMatches = async (force = false) => {
