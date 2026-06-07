@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import AdSlot from '../components/AdSlot'
 
 // ── FLAG MAP ──────────────────────────────────────────────
@@ -96,7 +97,13 @@ export default function Scores() {
 
     setCacheHit(false)
 
-    
+    // No API key — use demo data
+    if (!API_KEY || API_KEY === 'your_key_here') {
+      setMatches(DEMO_MATCHES)
+      setLastUpdated('Demo mode — Add VITE_FOOTBALL_API_KEY to .env')
+      setLoading(false)
+      return
+    }
 
     try {
       const today  = new Date().toISOString().split('T')[0]
@@ -186,6 +193,11 @@ export default function Scores() {
 
   return (
     <div>
+      <Helmet>
+        <title>Live Scores - FIFA World Cup 2026 | GoalZone</title>
+        <meta name="description" content="Real-time FIFA World Cup 2026 live scores, match results and upcoming fixtures. Updated every minute."/>
+      </Helmet>
+
       {/* HERO */}
       <div className="bg-gradient-to-br from-blue-950 via-blue-900 to-red-800 text-white text-center py-12 px-4">
         <div className="inline-flex items-center gap-2 bg-yellow-400/15 border border-yellow-400/35 text-yellow-400 text-xs font-bold px-4 py-1.5 rounded-full mb-3 uppercase tracking-wider">
@@ -293,7 +305,15 @@ export default function Scores() {
 
         <AdSlot type="leaderboard" />
 
-        
+        {/* API KEY NOTE */}
+        {(!API_KEY || API_KEY === 'your_key_here') && (
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mt-4 text-sm text-blue-800">
+            <strong>ℹ️ Demo Mode:</strong> Add <code className="bg-blue-100 px-1 rounded">VITE_FOOTBALL_API_KEY</code> to <code className="bg-blue-100 px-1 rounded">.env</code> for live scores.
+            <a href="https://www.football-data.org/client/register" target="_blank" rel="noopener noreferrer"
+              className="ml-2 text-blue-700 underline font-semibold">Get free key →</a>
+          </div>
+        )}
+
       </div>
     </div>
   )

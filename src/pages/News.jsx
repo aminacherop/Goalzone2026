@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import AdSlot from '../components/AdSlot'
 
+
 const NEWS = [
   { id:1, cat:'preview', emoji:'⚽', title:'Brazil vs Germany: The Blockbuster Group L Clash', excerpt:'The two football giants meet again in what promises to be the most watched group stage match of the 2026 World Cup. Can Germany end Brazil\'s dominance?', date:'June 13, 2026', read:'4 min read', tags:['Brazil','Germany','Group L'], featured:true },
   { id:2, cat:'analysis', emoji:'🧠', title:'Why Argentina Are Favourites to Defend Their Title', excerpt:'Defending champions Argentina head into 2026 with a squad that has only grown stronger since Qatar 2022. Here\'s why they are many experts\' pick.', date:'June 11, 2026', read:'5 min read', tags:['Argentina','Analysis'], featured:false },

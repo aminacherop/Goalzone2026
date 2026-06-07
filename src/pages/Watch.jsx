@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import AdSlot from '../components/AdSlot'
 
 const BROADCASTERS = [
@@ -194,6 +195,11 @@ export default function Watch() {
 
   return (
     <div>
+      <Helmet>
+        <title>Where to Watch - FIFA World Cup 2026 | GoalZone</title>
+        <meta name="description" content="Find where to watch FIFA World Cup 2026 in your country. Official TV broadcasters and streaming services worldwide."/>
+      </Helmet>
+
       {/* HERO */}
       <div className="bg-gradient-to-br from-blue-950 via-blue-900 to-red-800 text-white text-center py-12 px-4">
         <div className="inline-flex items-center gap-2 bg-yellow-400/15 border border-yellow-400/35 text-yellow-400 text-xs font-bold px-4 py-1.5 rounded-full mb-3 uppercase tracking-wider">

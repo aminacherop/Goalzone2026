@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import AdSlot from '../components/AdSlot'
 
 const GROUPS = [
@@ -123,9 +123,6 @@ function GroupCard({ group }) {
       <div className="px-3 py-2 flex items-center gap-2 border-t border-gray-100">
         <div className="w-2 h-2 rounded-full bg-green-500"></div>
         <span className="text-xs text-gray-400">Top 2 advance to Round of 32</span>
-        {/* AD 2 — Bottom */}
-        <AdSlot type="leaderboard" />
-
       </div>
     </div>
   )
@@ -143,6 +140,11 @@ export default function Groups() {
 
   return (
     <div>
+      <Helmet>
+        <title>Group Standings - FIFA World Cup 2026 | GoalZone</title>
+        <meta name="description" content="FIFA World Cup 2026 group standings. Track all 12 groups and see who advances to the Round of 32."/>
+      </Helmet>
+
       {/* HERO */}
       <div className="bg-gradient-to-br from-blue-950 via-blue-900 to-red-800 text-white text-center py-12 px-4">
         <div className="inline-flex items-center gap-2 bg-yellow-400/15 border border-yellow-400/35 text-yellow-400 text-xs font-bold px-4 py-1.5 rounded-full mb-3 uppercase tracking-wider">
@@ -194,6 +196,9 @@ export default function Groups() {
             {filtered.map(g => <GroupCard key={g.name} group={g} />)}
           </div>
         )}
+
+        {/* AD 2 — Bottom */}
+        <AdSlot type="leaderboard" />
 
       </div>
     </div>

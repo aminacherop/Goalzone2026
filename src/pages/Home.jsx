@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import AdSlot from '../components/AdSlot'
 
 const KICKOFF = new Date('2026-06-11T20:00:00Z')
 
-// ── COUNTDOWN TIMER ──────────────────────────────────────
 function CountdownTimer() {
   const [time, setTime] = useState({d:0,h:0,m:0,s:0})
   useEffect(() => {
@@ -49,7 +49,6 @@ function CountdownTimer() {
   )
 }
 
-// ── STATS BAR ─────────────────────────────────────────────
 function StatsBar() {
   const stats = [
     { num:'48',  label:'Teams' },
@@ -72,7 +71,6 @@ function StatsBar() {
   )
 }
 
-// ── FEATURE CARDS ─────────────────────────────────────────
 function FeatureCards() {
   const cards = [
     { icon:'📊', title:'Live Scores',     desc:'Real-time scores and minute-by-minute updates for every match.', badge:'🔴 Live',      badgeColor:'bg-red-50 text-red-600',    border:'border-t-red-500',    link:'/scores' },
@@ -95,14 +93,13 @@ function FeatureCards() {
   )
 }
 
-// ── SCORES PREVIEW ────────────────────────────────────────
 function ScoresPreview() {
   const matches = [
-    { home:{name:'Mexico',      flag:'🇲🇽'}, away:{name:'South Africa', flag:'🇿🇦'}, score:'-', status:'upcoming', time:'Jun 11 · 3:00 PM ET' },
-    { home:{name:'Canada',      flag:'🇨🇦'}, away:{name:'Bosnia',       flag:'🇧🇦'}, score:'-', status:'upcoming', time:'Jun 12 · 6:00 PM ET' },
-    { home:{name:'USA',         flag:'🇺🇸'}, away:{name:'Paraguay',     flag:'🇵🇾'}, score:'-', status:'upcoming', time:'Jun 12 · 9:00 PM ET' },
-    { home:{name:'Brazil',      flag:'🇧🇷'}, away:{name:'Germany',      flag:'🇩🇪'}, score:'-', status:'upcoming', time:'Jun 13 · 3:00 PM ET' },
-    { home:{name:'Spain',       flag:'🇪🇸'}, away:{name:'Scotland',     flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿'}, score:'-', status:'upcoming', time:'Jun 14 · 12:00 PM ET' },
+    { home:{name:'Mexico',flag:'🇲🇽'}, away:{name:'South Africa',flag:'🇿🇦'}, score:'-', status:'upcoming', time:'Jun 11 · 3:00 PM ET' },
+    { home:{name:'Canada',flag:'🇨🇦'}, away:{name:'Bosnia',flag:'🇧🇦'}, score:'-', status:'upcoming', time:'Jun 12 · 6:00 PM ET' },
+    { home:{name:'USA',flag:'🇺🇸'}, away:{name:'Paraguay',flag:'🇵🇾'}, score:'-', status:'upcoming', time:'Jun 12 · 9:00 PM ET' },
+    { home:{name:'Brazil',flag:'🇧🇷'}, away:{name:'Germany',flag:'🇩🇪'}, score:'-', status:'upcoming', time:'Jun 13 · 3:00 PM ET' },
+    { home:{name:'Spain',flag:'🇪🇸'}, away:{name:'Scotland',flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿'}, score:'-', status:'upcoming', time:'Jun 14 · 12:00 PM ET' },
   ]
   const statusStyle = { live:'bg-red-50 text-red-600', finished:'bg-green-50 text-green-700', upcoming:'bg-gray-100 text-gray-500' }
   const statusLabel = { live:'🔴 LIVE', finished:'✅ FT', upcoming:'🕐 Soon' }
@@ -142,13 +139,12 @@ function ScoresPreview() {
   )
 }
 
-// ── OPENING MATCHES ───────────────────────────────────────
 function OpeningMatches() {
   const matches = [
-    { home:{name:'Mexico', flag:'🇲🇽'}, away:{name:'South Africa', flag:'🇿🇦'}, date:'Jun 11 · 3:00 PM ET', venue:'Azteca, Mexico City' },
-    { home:{name:'USA',    flag:'🇺🇸'}, away:{name:'Paraguay',     flag:'🇵🇾'}, date:'Jun 12 · 9:00 PM ET', venue:'LA Stadium' },
-    { home:{name:'Canada', flag:'🇨🇦'}, away:{name:'Bosnia',       flag:'🇧🇦'}, date:'Jun 12 · 6:00 PM ET', venue:'BMO Field, Toronto' },
-    { home:{name:'Brazil', flag:'🇧🇷'}, away:{name:'Germany',      flag:'🇩🇪'}, date:'Jun 13 · 3:00 PM ET', venue:'MetLife, New York' },
+    { home:{name:'Mexico',flag:'🇲🇽'}, away:{name:'South Africa',flag:'🇿🇦'}, date:'Jun 11 · 3:00 PM ET', venue:'Azteca, Mexico City' },
+    { home:{name:'USA',flag:'🇺🇸'}, away:{name:'Paraguay',flag:'🇵🇾'}, date:'Jun 12 · 9:00 PM ET', venue:'LA Stadium' },
+    { home:{name:'Canada',flag:'🇨🇦'}, away:{name:'Bosnia',flag:'🇧🇦'}, date:'Jun 12 · 6:00 PM ET', venue:'BMO Field, Toronto' },
+    { home:{name:'Brazil',flag:'🇧🇷'}, away:{name:'Germany',flag:'🇩🇪'}, date:'Jun 13 · 3:00 PM ET', venue:'MetLife, New York' },
   ]
   return (
     <div className="mb-8">
@@ -182,7 +178,6 @@ function OpeningMatches() {
   )
 }
 
-// ── GROUPS PREVIEW ────────────────────────────────────────
 function GroupsPreview() {
   const groups = [
     { name:'Group A', teams:['🇲🇽 Mexico','🇿🇦 South Africa','🇰🇷 South Korea','🇨🇿 Czechia'] },
@@ -214,49 +209,14 @@ function GroupsPreview() {
   )
 }
 
-// // ── NEWSLETTER ────────────────────────────────────────────
-// function Newsletter() {
-//   const [email, setEmail] = useState('')
-//   const [team, setTeam]   = useState('')
-//   const [done, setDone]   = useState(false)
-//   const teams = ['🇦🇷 Argentina','🇧🇷 Brazil','🇫🇷 France','🇩🇪 Germany','🏴󠁧󠁢󠁥󠁮󠁧󠁿 England','🇪🇸 Spain','🇵🇹 Portugal','🇦🇺 Australia','🇧🇪 Belgium','🇨🇦 Canada','🇨🇱 Chile','🇨🇴 Colombia','🇳🇱 Netherlands','🇲🇽 Mexico','🇳🇬 Nigeria','🇳🇴 Norway','🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland','🇸🇳 Senegal','🇿🇦 South Africa','🇰🇷 South Korea','🇨🇭 Switzerland','🇺🇾 Uruguay','🇺🇸 USA','🇰🇪 Kenya (Fan)']
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault()
-//     if (!email) return
-//     setDone(true)
-//   }
-
-//   return (
-//     <div className="bg-gradient-to-r from-blue-900 to-blue-800 rounded-xl p-6 mb-8 text-white text-center">
-//       <h2 className="text-xl font-black mb-1">🔔 Get Match Alerts</h2>
-//       <p className="text-white/80 text-sm mb-4">Pre-match reminders, goal alerts and AI predictions. Free forever.</p>
-//       {done ? (
-//         <div className="text-lg font-bold">🎉 You're subscribed! Check your inbox.</div>
-//       ) : (
-//         <form onSubmit={handleSubmit} className="flex flex-wrap gap-2 justify-center max-w-xl mx-auto">
-//           <input type="email" placeholder="Your email address..." value={email}
-//             onChange={e => setEmail(e.target.value)}
-//             className="flex-1 min-w-48 px-4 py-2 rounded-full text-gray-900 text-sm outline-none border-none" required/>
-//           <select value={team} onChange={e => setTeam(e.target.value)}
-//             className="flex-1 min-w-40 px-4 py-2 rounded-full text-gray-900 text-sm outline-none border-none cursor-pointer">
-//             <option value="">⚽ Favourite team...</option>
-//             {teams.map(t => <option key={t} value={t}>{t}</option>)}
-//           </select>
-//           <button type="submit"
-//             className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-2 rounded-full text-sm transition-colors border-none cursor-pointer whitespace-nowrap">
-//             🔔 Subscribe Free
-//           </button>
-//         </form>
-//       )}
-//     </div>
-//   )
-
-
-// ── MAIN HOME PAGE ────────────────────────────────────────
 export default function Home() {
   return (
     <div>
+      <Helmet>
+        <title>GoalZone 2026 - FIFA World Cup Hub | Live Scores & AI Predictions</title>
+        <meta name="description" content="Your ultimate FIFA World Cup 2026 hub. Live scores, AI match predictions, group standings and everything you need for World Cup 2026."/>
+      </Helmet>
+
       {/* HERO */}
       <div className="bg-gradient-to-br from-blue-950 via-blue-900 to-red-800 text-white text-center py-16 px-4">
         <div className="inline-flex items-center gap-2 bg-yellow-400/15 border border-yellow-400/35 text-yellow-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
@@ -282,30 +242,15 @@ export default function Home() {
       <StatsBar />
 
       <div className="max-w-4xl mx-auto px-4 py-8">
-
-        {/* AD 1 — Top of page (highest CTR) */}
         <AdSlot type="leaderboard" />
-
         <FeatureCards />
-
-        {/* AD 2 — After feature cards */}
         <AdSlot type="rectangle" />
-
         <ScoresPreview />
-
-        {/* AD 3 — After scores preview */}
         <AdSlot type="leaderboard" />
-
         <OpeningMatches />
         <GroupsPreview />
-
-        {/* AD 4 — Before newsletter */}
         <AdSlot type="rectangle" />
-
-
-        {/* AD 5 — Bottom of page */}
         <AdSlot type="leaderboard" />
-
       </div>
     </div>
   )
